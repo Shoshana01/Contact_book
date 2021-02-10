@@ -48,15 +48,21 @@ class CRM
   end
 
   def modify_existing_contact
-    print 'Enter the id of the contact you would like to modify'
+    print 'Enter the id of the contact you would like to modify:'
    user_input = gets.chomp
    id = user_input.to_i
    contact_to_be_modified = Contact.find(id)
-   print "Enter Attribute you wish to change: (First_name, last_name, email, note)"
-   key = gets.chomp
+   print "Enter Attribute you wish to change: (print 1 for First_name, print 2 for last_name, print 3 for email, print 4 for note)"
+   att_to_change= gets.chomp.to_i
+   case att_to_change
+   when 1 then key = "first_name"
+   when 2 then key = "last_name"
+   when 3 then key = "email"
+   when 4 then key = "note"
+   end
    print "Enter new value of attribute:"
    value = gets.chomp
-   contact_to_be_modified.update(key,value)
+   contact_to_be_modified.update(key => value)
   end
 
   def delete_contact
@@ -87,6 +93,5 @@ at_exit do
   ActiveRecord::Base.connection.close
 end
 
-# a_crm_app = CRM.new
-# p a_crm_app
-# a_crm_app.add_new_contact
+a_crm_app = CRM.new
+a_crm_app.main_menu
