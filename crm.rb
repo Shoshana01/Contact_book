@@ -32,7 +32,6 @@ class CRM
     when 4 then display_all_contacts
     when 5 then search_by_attribute
     when 6 then exit
-
     end
   end
 
@@ -45,7 +44,7 @@ class CRM
     email = gets.chomp
     print 'Enter a Note: '
     note = gets.chomp
-    Contact.create(first_name, last_name, email, note)
+    Contact.create(first_name: first_name, last_name: last_name, email: email, note: note)
   end
 
   def modify_existing_contact
@@ -81,10 +80,13 @@ class CRM
 
 end
 
+a= Contact.create(first_name: "Sue", last_name: "Anthon") 
+b= Contact.create(first_name: "Eliza", note: "I am 17" )
+
 at_exit do
   ActiveRecord::Base.connection.close
 end
 
-a_crm_app = CRM.new
-p a_crm_app
-a_crm_app.add_new_contact
+# a_crm_app = CRM.new
+# p a_crm_app
+# a_crm_app.add_new_contact

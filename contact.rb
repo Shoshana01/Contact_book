@@ -14,12 +14,17 @@ class Contact < ActiveRecord::Base
   def full_name
     return "#{@first_name} #{@last_name}"
   end
+end
+
 
   Contact.auto_upgrade!
 
+
+  
+
  
-betty = Contact.create('Betty', 'Maker', 'bettymakes@gmail.com', 'Loves Pokemon')
-lily = Contact.create('Lily', 'Jones', 'lilianjones@gmail.com', '17 yrs old')
+# betty = Contact.create('Betty', 'Maker', 'bettymakes@gmail.com', 'Loves Pokemon')
+# lily = Contact.create('Lily', 'Jones', 'lilianjones@gmail.com', '17 yrs old')
 # p betty
 # p betty.update("first_name", "betsy")
 # p Contact.find_by("last_name", "Maker")
